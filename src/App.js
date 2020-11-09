@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import logo from "./logo.svg";
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Content from "./components/Content";
+import Item from "./components/Item";
+import TaskForm from "./components/TaskForm";
+import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App App-header col-xs col-sm col-md">
+        <Header></Header>
+        <div>
+          <Route exact path="/" component={Content}></Route>
+
+          <Route exact path="/create" component={TaskForm}></Route>
+          <Route exact path="/tasks/:id" component={Item}></Route>
+        </div>
+        <Footer></Footer>
+      </div>
+    </Router>
   );
 }
 
